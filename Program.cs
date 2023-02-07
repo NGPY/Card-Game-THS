@@ -21,7 +21,7 @@
     {
         // Properties
         private string suite;
-        private int value;
+        private int value; // googoo
         private string rank;
         // Constructor
         public PlayingCard(string suite, string rank, int value)
