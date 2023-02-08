@@ -62,8 +62,47 @@
     {
         static void Main(string[] args)
         {
-            PlayingCard queen = new PlayingCard("hearts", "queen", 10);
-            Console.WriteLine(queen.Rank);
+            Circle goo = new Circle(31.4);
+            (string, double) q = goo.GenerateCircumferanceQuestion();
+            Console.WriteLine(q.Item1);
+            double answer = Convert.ToDouble(Console.ReadLine());
+            if (answer == q.Item2)
+            {
+                Console.WriteLine("Correct");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect");
+                Console.WriteLine($"Correct answer: {q.Item2}");
+            }
+
         }
     }
+    // circle
+
+    class Circle
+    {
+        private double pi = 3.14;
+        public double radius { get; }
+        public double diameter { get; }
+        public double area { get; }
+        public double circumferance { get; }
+
+        public Circle(double radius)
+        {
+            this.radius = Math.Round(radius, 2);
+            this.circumferance = Math.Round(radius * pi * 2, 2);
+            this.area = Math.Round(pi * Math.Pow(radius, 2), 2);
+            this.diameter = Math.Round(radius * 2, 2);
+        }
+        public (string, double) GenerateAreaQuestion()
+        {
+            return ($"Find the area of a circle with a radius of {this.radius} ", 3.14 * Math.Pow(this.radius, 2));
+        }
+        public (string, double) GenerateCircumferanceQuestion()
+        {
+            return ($"Find the radius of a circle with circumferance of {this.circumferance}", this.radius);
+        }
+    }
+
 }
